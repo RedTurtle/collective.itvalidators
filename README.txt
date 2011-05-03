@@ -8,7 +8,7 @@ This product add to Plone some additional `validators`__.
 __ http://plone.org/documentation/manual/developer-manual/archetypes/fields/validator-reference
 
 Some of theme can be useful only for Italian users or sites targeted on Italy (as many of the default ones
-like ``isSSN``or ``isUSPhoneNumber`` are not useful for non-US sites), other are simply additional validators
+like ``isSSN`` or ``isUSPhoneNumber`` are not useful for non-US sites), other are simply additional validators
 that everyone can find useful.
 
 The idea behind the product is simply collect a set of validators that commonly are putted inside other
