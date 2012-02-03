@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.0 (Unreleased)
+------------------
+
+* new validator: ``DependencyCheckValidator`` [keul]
+
 0.1.0 (2011-05-03)
 ------------------
 

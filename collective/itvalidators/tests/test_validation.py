@@ -39,7 +39,8 @@ def test_suite():
     suite.addTest(makeSuite(TestValidation))
 
     doctests = (
-        'collective.itvalidators.validators.MinCharsValidator',
+        'collective.itvalidators.validators.min_chars',
+        'collective.itvalidators.validators.dependency_check',
         )
     for module in doctests:
         suite.addTest(doctest.DocTestSuite(module))

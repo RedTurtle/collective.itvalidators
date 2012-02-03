@@ -9,11 +9,11 @@ from Products.CMFCore.utils import getToolByName
 import re
 
 class MinCharsValidator:
-    """ Validator for having a minimum number of characters in a text
+    """
+    Validator for having a minimum number of characters in a text
 
-    The simplest usare ask you a number of characters
+    The simplest usage ask you a number of characters
 
-    >>> from Products.ATContentTypes.content.document import ATDocument
     >>> val = MinCharsValidator(10, strict=False) 
     >>> class D: text='Hello World'
     >>> d = D()
@@ -23,7 +23,7 @@ class MinCharsValidator:
     now lets fail a test
     >>> d.text = 'Hello'
     >>> val(d.text, d)
-    u'Validation failed: required min 10 chars, provided 5'
+    u'Required min 10 chars, provided 5'
 
     It is also possible to specify the error string
 
@@ -49,8 +49,8 @@ class MinCharsValidator:
            'object':instance,
            'instance':instance,
            'value':value,
-           'args':args,
            'chars':self.chars,
+           'args':args,
            'kwargs':kwargs,
            }
         
@@ -78,7 +78,7 @@ class MinCharsValidator:
             # support strings as errormsg for backward compatibility
             return self.errormsg % kw
         else:
-            msg = _(u'Validation failed: required min $chars chars, provided ${current}',
+            msg = _(u'Required min $chars chars, provided ${current}',
                     mapping={'chars': self.chars, 'current': len(stripped)})
             return recursiveTranslate(msg, **kwargs)
 

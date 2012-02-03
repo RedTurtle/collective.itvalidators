@@ -3,7 +3,7 @@
 from Products.validation import validation
 
 from collective.itvalidators.validators.base_validators import baseValidators
-from collective.itvalidators.validators.MinCharsValidator import MinCharsValidator
+#from collective.itvalidators.validators.MinCharsValidator import MinCharsValidator
 
 
 for v in baseValidators:

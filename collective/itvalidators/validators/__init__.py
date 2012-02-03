@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from MinCharsValidator import MinCharsValidator
+from min_chars import MinCharsValidator
+from dependency_check import DependencyCheckValidator
