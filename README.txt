@@ -67,21 +67,90 @@ An example::
     TextField('text',
               validators = (MinCharsValidator()),
     ),
+    ...
 
 To customize the number of characters::
 
     TextField('text',
               validators = (MinCharsValidator(100)),
     ),
+    ...
 
 You can also threat is a special way HTML text (for example, if it came from TinyMCE) beeing sure that only
 content characters (not HTML tags) are counted. Example::
 
+    ...
     TextField('text',
               default_output_type = 'text/x-html-safe',
               validators = ('isTidyHtmlWithCleanup', MinCharsValidator(100, strict=True)),
     ),
+    ...
 
+DependencyCheckValidator
+------------------------
+
+This validator check the value ("*wanted value*") contained in a field, but only when another field contains
+a "*warning value*".
+This mean that when the *observed* field isn't matching the value you are monitor, no validation take place;
+when this is true, a second level of validation of the current field take place.
+
+You need to configure this validator giving the ``observed`` field. After that you need to provide both
+``warnValue`` and ``wantedValue``.
+
+Example:
+
+    Check that when an observed field contains the value "*Other...*", this field contains the value "*Foo*".
+
+This first example seems not very useful but know that both configuration parameters can be a specific
+value, or a boolean value.
+
+In details:
+
+* When ``warnValue`` is *False* mean that you want to monitor when the *observed* field is empty.
+* When ``warnValue`` is *True* mean that you want to monitor when the *observed* field is not empty.
+* When ``wantedValue`` is *False* mean that validation will pass if the field if empty.
+* When ``wantedValue`` is *True* mean that validation will pass if the field not empty.
+
+Another (better) example:
+
+    Check that when an observed field contains the value "*Other...*", this field contains *something*.
+
+How to use
+~~~~~~~~~~
+
+The first example above::
+
+    from collective.itvalidators.validators import DependencyCheckValidator
+    ...
+    
+    StringField('field1',),
+    StringField('field2',
+                validators = (DependencyCheckValidator('field1', warnValue='Other...', wantedValue='Foo')),
+    ),
+    ...
+
+The second example above::
+
+    ...
+    StringField('field1',),
+    StringField('field2',
+                validators = (DependencyCheckValidator('field1', warnValue='Other...', wantedValue=True)),
+    ),
+    ...
+
+Final note
+~~~~~~~~~~
+
+Normally Archetypes framework doesn't run validation for non-required empty fields. This happens adding as first validator
+a default sufficient "*isEmptyNoError*".
+
+You probably need to play with Products.validation APIs to use ``wantedValue`` True::
+
+    YourSchema['field2'].validators.insertRequired(
+                    DependencyCheckValidator('field1', warnValue='Other...', wantedValue=True)
+    )
+
+This will add in position 0 a required validator.
 
 Contribute!
 ===========
@@ -94,13 +163,22 @@ You can also contribute providing new translation for validation messages.
 Credits
 =======
 
-Developed with the support of `Azienda USL Ferrara`__; Azienda USL Ferrara supports the
-`PloneGov initiative`__.
+Developed with the support of:
 
-.. image:: http://www.ausl.fe.it/logo_ausl.gif
-   :alt: Azienda USL's logo
+* `Azienda USL Ferrara`__
+  
+  .. image:: http://www.ausl.fe.it/logo_ausl.gif
+     :alt: Azienda USL's logo
+  
+* `S. Anna Hospital, Ferrara`__
+
+  .. image:: http://www.ospfe.it/ospfe-logo.jpg 
+     :alt: S. Anna Hospital - logo
+
+All of them supports the `PloneGov initiative`__.
 
 __ http://www.ausl.fe.it/
+__ http://www.ospfe.it/
 __ http://www.plonegov.it/
 
 Authors

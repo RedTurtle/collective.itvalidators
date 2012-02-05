@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from Products.validation.interfaces.IValidator import IValidator
-from collective.itvalidators import validatorsMessageFactory as _
-from zope.i18nmessageid import Message
+import re
+
 from Products.validation.i18n import recursiveTranslate
+from Products.validation.interfaces.IValidator import IValidator
 from Products.CMFCore.utils import getToolByName
 
-import re
+from collective.itvalidators import validatorsMessageFactory as _
+from zope.i18nmessageid import Message
 
 class MinCharsValidator:
     """
@@ -78,8 +79,7 @@ class MinCharsValidator:
             # support strings as errormsg for backward compatibility
             return self.errormsg % kw
         else:
-            msg = _(u'Required min $chars chars, provided ${current}',
+            msg = _('min_chars_error_msg',
+                    default=u'Required min $chars chars, provided ${current}',
                     mapping={'chars': self.chars, 'current': len(stripped)})
             return recursiveTranslate(msg, **kwargs)
-
-#validation.register(MinCharsValidator())

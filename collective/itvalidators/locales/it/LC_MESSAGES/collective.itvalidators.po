@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-05-02 10:41+0000\n"
+"POT-Creation-Date: 2012-02-05 14:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -14,11 +14,36 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.itvalidators\n"
 
-#: ../validators/MinCharsValidator.py:81
-msgid "Validation failed: required min $chars chars, provided ${current}"
-msgstr "Validazione fallita: richiesti minimo $chars caratteri, forniti ${current}"
+#: ../validators/dependency_check.py:228
+msgid "a value"
+msgstr "un valore"
+
+#. Default: "\"$observed\" field value is $warnValue. This requires that this field contains $wantedValue."
+#: ../validators/dependency_check.py:246
+msgid "dependency_check_error_msg"
+msgstr "Il valore del campo \"$observed\" è $warnValue. Questo richiede che questo campo contenga $wantedValue."
+
+#: ../validators/dependency_check.py:218
+msgid "empy"
+msgstr "vuoto"
 
 #: ../validators/base_validators.py:12
 msgid "is not a valid CAP."
 msgstr "non è un CAP valido"
 
+#: ../validators/base_validators.py:17
+msgid "is not a valid National Insurance Number."
+msgstr "non è un codice fiscale valido"
+
+#. Default: "Required min $chars chars, provided ${current}"
+#: ../validators/min_chars.py:81
+msgid "min_chars_error_msg"
+msgstr "Richiesti minimo $chars caratteri, forniti ${current}"
+
+#: ../validators/dependency_check.py:232
+msgid "no value"
+msgstr "nesusn valore"
+
+#: ../validators/dependency_check.py:214
+msgid "not empty"
+msgstr "non vuoto"

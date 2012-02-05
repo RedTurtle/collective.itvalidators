@@ -12,11 +12,14 @@ setup(name='collective.itvalidators',
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
         "Framework :: Plone",
+        "Framework :: Plone :: 3.3",
         "Programming Language :: Python",
+        "Intended Audience :: Developers",
+        "Development Status :: 5 - Production/Stable",
         ],
       keywords='plone archetype validator plonegov',
       author='RedTurtle Technology',
-      author_email='sviluppoplone@redturtle.net',
+      author_email='sviluppoplone@redturtle.it',
       url='http://plone.org/products/collective.itvalidators',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
@@ -25,7 +28,7 @@ setup(name='collective.itvalidators',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'Products.validation',
       ],
       test_suite='collective.itvalidators.tests.test_validation.test_suite',
       entry_points="""
