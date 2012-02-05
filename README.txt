@@ -104,12 +104,12 @@ Example:
 This first example seems not very useful but know that both configuration parameters can be a specific
 value, or a boolean value.
 
-In details:
+When using boolean values:
 
 * When ``warnValue`` is *False* mean that you want to monitor when the *observed* field is empty.
 * When ``warnValue`` is *True* mean that you want to monitor when the *observed* field is not empty.
 * When ``wantedValue`` is *False* mean that validation will pass if the field if empty.
-* When ``wantedValue`` is *True* mean that validation will pass if the field not empty.
+* When ``wantedValue`` is *True* mean that validation will pass if the field not empty (see below).
 
 Another (better) example:
 
@@ -150,7 +150,7 @@ You probably need to play with Products.validation APIs to use ``wantedValue`` T
                     DependencyCheckValidator('field1', warnValue='Other...', wantedValue=True)
     )
 
-This will add in position 0 a required validator.
+This will add in position 0 a required validator. In this way the validation runs normally.
 
 Contribute!
 ===========
