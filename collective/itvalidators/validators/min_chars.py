@@ -73,7 +73,9 @@ class MinCharsValidator:
         if self.errormsg and type(self.errormsg) == Message:
             #hack to support including values in i18n message, too. hopefully this works out
             #potentially it could unintentionally overwrite already present values
-            self.errormsg.mapping = kw
+            #self.errormsg.mapping = kw
+            if self.errormsg.mapping:
+                self.errormsg.mapping.update(**kw)
             return recursiveTranslate(self.errormsg, **kwargs)
         elif self.errormsg:
             # support strings as errormsg for backward compatibility
