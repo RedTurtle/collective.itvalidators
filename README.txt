@@ -174,11 +174,14 @@ Developed with the support of:
 
   .. image:: http://www.ospfe.it/ospfe-logo.jpg 
      :alt: S. Anna Hospital - logo
+   
+* `Regione Emilia Romagna`__
 
 All of them supports the `PloneGov initiative`__.
 
 __ http://www.ausl.fe.it/
 __ http://www.ospfe.it/
+__ http://www.regione.emilia-romagna.it/
 __ http://www.plonegov.it/
 
 Authors
