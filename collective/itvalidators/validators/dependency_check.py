@@ -224,11 +224,11 @@ class DependencyCheckValidator:
                 return True
             kw['wantedValue'] = '"%s"' % self.wantedValue
         elif self.wantedValue:
-            if value:
+            if value and self.eval_DataGridTrueValue(value):
                 return True
             kw['wantedValue'] = _(u"a value")
         else:
-            if not value:
+            if not value and not self.eval_DataGridTrueValue(value):
                 return True
             kw['wantedValue'] = _(u"no value")
 
@@ -252,3 +252,39 @@ class DependencyCheckValidator:
                              'wantedValue': kw['wantedValue']})
             return recursiveTranslate(msg, **kwargs)
 
+    @classmethod
+    def eval_DataGridTrueValue(cls, value):
+        """
+        DataGridField specific True/False checker - something like this is False!
+        [{'column_a': '', 'orderindex_': 'template_row_marker', 'column_b': ''}]
+
+        Normal values are evalutated as normal
+        
+        >>> eval_DataGridTrueValue = DependencyCheckValidator.eval_DataGridTrueValue
+        >>> eval_DataGridTrueValue(None)
+        False
+        >>> eval_DataGridTrueValue(1)
+        True
+        >>> eval_DataGridTrueValue(0)
+        False
+
+        >>> val = [{'column_a': '', 'orderindex_': 'template_row_marker', 'column_b': ''}]
+        >>> eval_DataGridTrueValue(val)
+        False
+        >>> val[0]['column_a'] = 'something'
+        >>> eval_DataGridTrueValue(val)
+        True
+        
+        """
+        if type(value)==list and len(value)==1:
+            elem = value[0]
+            if type(elem)==dict or hasattr(elem, 'orderindex_'):
+                # ok, is a DataGridfield with one single row. Check if is empty
+                for cname, cvalue in elem.items():
+                    if cname=='orderindex_':
+                        continue
+                    if cvalue:
+                        return True
+                return False
+        # In ant other case, normal python meaning is ok
+        return bool(value)

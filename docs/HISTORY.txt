@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.3.0 (2012-05-02)
+------------------
+
+* added a specific support for DataGridField empty values.
+  Please *note* that this has been tested with DataGridField 1.6
+  [keul]
+
+
 0.2.1 (2012-02-09)
 ------------------
 
