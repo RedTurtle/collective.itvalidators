@@ -4,7 +4,7 @@ Changelog
 0.3.0 (2012-05-02)
 ------------------
 
-* added a specific support for DataGridField empty values.
+* added a specific support for DataGridField empty values using ``wantedValue``.
   Please *note* that this has been tested with DataGridField 1.6
   [keul]
 
