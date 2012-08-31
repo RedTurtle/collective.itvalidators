@@ -7,6 +7,9 @@ from Products.CMFCore.utils import getToolByName
 from collective.itvalidators import validatorsMessageFactory as _
 from zope.i18nmessageid import Message
 
+from zope.interface import implements
+import sys
+
 class DependencyCheckValidator:
     """ 
     Validator for making a field required when another field is not giving a proper value.
@@ -176,9 +179,11 @@ class DependencyCheckValidator:
     u'"Main text" field value is not empty. This requires that this field contains a value.'
 
     """
-
-    __implements__ = (IValidator,)
-
+    if sys.version_info[:2] >= (2, 6):
+        implements(IValidator)
+    else:
+        __implements__ = (IValidator,)
+        
     name = 'dependencycheckvalidator'
 
     def __init__(self, observed, warnValue, wantedValue, errormsg=None):

@@ -9,6 +9,9 @@ from Products.CMFCore.utils import getToolByName
 from collective.itvalidators import validatorsMessageFactory as _
 from zope.i18nmessageid import Message
 
+from zope.interface import implements
+import sys
+
 class MinCharsValidator:
     """
     Validator for having a minimum number of characters in a text
@@ -34,7 +37,10 @@ class MinCharsValidator:
 
     """
 
-    __implements__ = (IValidator,)
+    if sys.version_info[:2] >= (2, 6):
+        implements(IValidator)
+    else:
+        __implements__ = (IValidator,)
 
     name = 'mincharsvalidator'
 

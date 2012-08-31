@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4.0 (unreleased)
+------------------
+
+* fix __implements__ to implements for Plone4 [fdelia]
+
 0.3.0 (2012-05-02)
 ------------------
 
