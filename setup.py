@@ -5,7 +5,7 @@ version = '0.4.0'
 
 setup(name='collective.itvalidators',
       version=version,
-      description="A set of Archetype validators for Plone, some for Italian specific needs, others useful for all",
+      description="A set of Archetypes validators for Plone, some for Italian specific needs, others useful for all",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
