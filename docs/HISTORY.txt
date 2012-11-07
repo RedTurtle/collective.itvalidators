@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.4.0 (2012-08-31)
+0.4.0 (Unreleased)
 ------------------
 
-* fix __implements__ to implements for Plone4 [fdelia]
+* fix interfaces implements method for Plone 4 [fdelia]
+* Fixed tests for Plone 4.2 [keul]
 
 0.3.0 (2012-05-02)
 ------------------
@@ -12,7 +13,6 @@ Changelog
 * added a specific support for DataGridField empty values using ``wantedValue``.
   Please *note* that this has been tested with DataGridField 1.6
   [keul]
-
 
 0.2.1 (2012-02-09)
 ------------------

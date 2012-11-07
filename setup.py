@@ -1,7 +1,9 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.4.0'
+version = '0.4.0.dev0'
+
+tests_require=['zope.testing', 'Products.CMFTestCase']
 
 setup(name='collective.itvalidators',
       version=version,
@@ -15,11 +17,12 @@ setup(name='collective.itvalidators',
         "Framework :: Plone :: 3.3",
         "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
         "Programming Language :: Python",
         "Intended Audience :: Developers",
         "Development Status :: 5 - Production/Stable",
         ],
-      keywords='plone archetype validator plonegov',
+      keywords='plone archetypes validator plonegov',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.it',
       url='http://plone.org/products/collective.itvalidators',
@@ -32,6 +35,8 @@ setup(name='collective.itvalidators',
           'setuptools',
           'Products.validation',
       ],
+      tests_require=tests_require,
+      extras_require=dict(test=tests_require),
       test_suite='collective.itvalidators.tests.test_validation.test_suite',
       entry_points="""
       # -*- Entry points: -*-
